@@ -1,5 +1,3 @@
-package Model
-
 class Competencia {
     Integer id
     String nomeCompetencia

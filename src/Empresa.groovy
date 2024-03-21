@@ -1,5 +1,3 @@
-package Model
-
 class Empresa {
     Integer id
     String nomeEmpresa

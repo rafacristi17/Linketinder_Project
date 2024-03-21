@@ -1,4 +1,3 @@
-package Model
 
 class Vaga {
     Integer id

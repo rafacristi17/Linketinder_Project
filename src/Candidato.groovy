@@ -1,4 +1,3 @@
-package Model
 
 class Candidato {
     Integer id
