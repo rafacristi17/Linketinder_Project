@@ -1,0 +1,25 @@
+plugins {
+    id 'groovy'
+}
+
+group 'br.com'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    test {
+        resources {
+            srcDir 'src/test/resources'
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.codehaus.groovy:groovy-all:2.5.7'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
