@@ -1,5 +1,6 @@
 plugins {
     id 'groovy'
+    id 'application'
 }
 
 group 'br.com'
@@ -19,7 +20,8 @@ sourceSets {
 }
 
 dependencies {
-    implementation 'org.codehaus.groovy:groovy-all:2.5.7'
-    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.codehaus.groovy:groovy-all:3.0.9'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.1'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }
+mainClassName = 'Candidato.groovy'
