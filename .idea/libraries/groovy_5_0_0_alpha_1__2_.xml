@@ -1,0 +1,68 @@
+<component name="libraryTable">
+  <library name="groovy-5.0.0-alpha-1 (2)" type="groovy-sdk">
+    <properties version="5.0.0-alpha-1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-cli-picocli-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-datetime-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-astbuilder-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-contracts-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-console-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-ant-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-cli-commons-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-dateutil-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-groovydoc-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-jmx-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-ginq-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-groovysh-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-jsr223-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-macro-library-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-json-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-nio-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-servlet-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-docgenerator-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-macro-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-sql-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-test-junit5-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-toml-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-testng-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-templates-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-test-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-swing-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-typecheckers-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-xml-5.0.0-alpha-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-5.0.0-alpha-1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-astbuilder-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-ant-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-cli-commons-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-cli-picocli-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-dateutil-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-datetime-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-console-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-ginq-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-docgenerator-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-groovydoc-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-jmx-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-contracts-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-nio-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-json-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-servlet-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-jsr223-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-macro-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-sql-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-groovysh-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-test-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-swing-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-toml-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-templates-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-test-junit5-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-macro-library-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-testng-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-typecheckers-5.0.0-alpha-1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../ARQUIVOS/apache-groovy-binary-4.0.18/groovy-xml-5.0.0-alpha-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
