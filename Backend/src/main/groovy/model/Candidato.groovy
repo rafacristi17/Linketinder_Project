@@ -13,4 +13,5 @@ class Candidato {
     Long cep
     String descricao
     String senha
+    List<String> tecnologias
 }

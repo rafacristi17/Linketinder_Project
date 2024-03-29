@@ -1,93 +1,58 @@
 package dao
 
 import model.Candidato
-
-import java.sql.*
+import model.Tecnologias
+import groovy.sql.Sql
 
 class CandidatoDAO {
-    private Connection connection
+    private Sql sql
 
-    CandidatoDAO() {
-        String url = "jdbc:postgresql://localhost:5432/linketinder_bd"
-        String user = "postgres"
-        String password = "123456"
-
-        try {
-            connection = DriverManager.getConnection(url, user, password)
-        } catch (SQLException e) {
-            println(e.getMessage())
-        }
-    }
-
-    void close() {
-        connection.close()
+    CandidatoDAO(Sql sql) {
+        this.sql = sql
     }
 
     void insert(Candidato candidato) {
-        String sql = "INSERT INTO candidato (idCandidato, nome, email, cpf, idade, estado, cep, descricao, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
-
-        PreparedStatement pstmt = connection.prepareStatement(sql)
-        pstmt.setInt(1, candidato.id)
-        pstmt.setString(2, candidato.nome)
-        pstmt.setString(3, candidato.email)
-        pstmt.setLong(4, candidato.cpf)
-        pstmt.setInt(5, candidato.idade)
-        pstmt.setString(6, candidato.estado)
-        pstmt.setLong(7, candidato.cep)
-        pstmt.setString(8, candidato.descricao)
-        pstmt.setString(9, candidato.senha)
-
-        pstmt.executeUpdate()
+        sql.execute("""
+        INSERT INTO candidato (nome, email, cpf, idade, estado, cep, descricao, senha, tecnologias) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, [
+                candidato.nome, candidato.email, candidato.cpf, candidato.idade,
+                candidato.estado, candidato.cep, candidato.descricao,
+                candidato.senha, candidato.tecnologias
+        ])
     }
-
-    Candidato select(int id) {
-        String sql = "SELECT * FROM candidato WHERE idCandidato = ?"
-
-        PreparedStatement pstmt = connection.prepareStatement(sql)
-        pstmt.setInt(1, id)
-
-        ResultSet rs = pstmt.executeQuery()
-
-        if (rs.next()) {
-            return new Candidato(
-                    idCandidato: rs.getInt("idCandidato"),
-                    nome: rs.getString("nome"),
-                    email: rs.getString("email"),
-                    cpf: rs.getLong("cpf"),
-                    idade: rs.getInt("idade"),
-                    estado: rs.getString("estado"),
-                    cep: rs.getLong("cep"),
-                    descricao: rs.getString("descricao"),
-                    senha: rs.getString("senha")
+    List<Candidato> all() {
+        def candidatos = []
+        sql.eachRow("SELECT * FROM candidato") { row ->
+            candidatos << new Candidato(
+                    idCandidato: row.idCandidato,
+                    nome: row.nome,
+                    email: row.email,
+                    cpf: row.cpf,
+                    idade: row.idade,
+                    estado: row.estado,
+                    cep: row.cep,
+                    descricao: row.descricao,
+                    senha: row.senha,
+                    tecnologias: row.tecnologias.split(',').collect { Tecnologias.valueOf(it) }
             )
-        } else {
-            return null
         }
+        return candidatos
     }
 
     void update(Candidato candidato) {
-        String sql = "UPDATE candidato SET nome = ?, email = ?, cpf = ?, idade = ?, estado = ?, cep = ?, descricao = ?, senha = ? WHERE idCandidato = ?"
-
-        PreparedStatement pstmt = connection.prepareStatement(sql)
-        pstmt.setString(1, candidato.nome)
-        pstmt.setString(2, candidato.email)
-        pstmt.setLong(3, candidato.cpf)
-        pstmt.setInt(4, candidato.idade)
-        pstmt.setString(5, candidato.estado)
-        pstmt.setLong(6, candidato.cep)
-        pstmt.setString(7, candidato.descricao)
-        pstmt.setString(8, candidato.senha)
-        pstmt.setInt(9, candidato.id)
-
-        pstmt.executeUpdate()
+        sql.execute("""
+            UPDATE candidato 
+            SET nome = ?, email = ?, idade = ?, estado = ?, cep = ?, descricao = ?, senha = ?, tecnologias = ? 
+            WHERE cpf = ?
+        """, [
+                candidato.nome, candidato.email, candidato.idade, candidato.estado,
+                candidato.cep, candidato.descricao, candidato.senha,
+                candidato.tecnologias.join(','), candidato.cpf
+        ])
     }
 
-    void delete(int id) {
-        String sql = "DELETE FROM candidato WHERE idCandidato = ?"
-
-        PreparedStatement pstmt = connection.prepareStatement(sql)
-        pstmt.setInt(1, id)
-
-        pstmt.executeUpdate()
+    void delete(long cpf) {
+        sql.execute("DELETE FROM candidato WHERE cpf = ?", [cpf])
     }
 }
