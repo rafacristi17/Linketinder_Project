@@ -1,13 +1,16 @@
+
 package view
 
-import dao.CandidatoDAO
 import model.Candidato
 import model.Tecnologias
 import regras.CandidatoRegras
+import dao.CandidatoDAO
+import java.util.Scanner
 
 class Menu {
+
     CandidatoRegras candidatoRegras
-    Scanner sc = new Scanner(System.in)
+    Scanner scanner = new Scanner(System.in)
 
     Menu(CandidatoDAO candidatoDAO) {
         this.candidatoRegras = new CandidatoRegras(candidatoDAO)
@@ -25,62 +28,70 @@ class Menu {
 
     void executar() {
         exibirMenu()
-
         while (true) {
-            if (System.console() != null) {
-                def opcao = System.console().readLine("Escolha uma opção: ")
-                switch (opcao) {
-                    case "1":
-                        cadastrarCandidato()
-                        break;
-                    case "2":
-                        listarCandidatos()
-                        break;
-                    case "3":
-                        atualizarCandidato()
-                        break;
-                    case "4":
-                        excluirCandidato()
-                        break;
-                    case "5":
-                      println("Saindo do programa...")
-
-                    default:
-                        println("Opção inválida.")
+            if (scanner.hasNextLine()) {
+                def opcao = scanner.nextLine()
+                if (opcao.isInteger()) {
+                    switch (opcao.toInteger()) {
+                        case 1:
+                            cadastrarCandidato()
+                            break
+                        case 2:
+                            listarCandidatos()
+                            break
+                        case 3:
+                            atualizarCandidato()
+                            break
+                        case 4:
+                            excluirCandidato()
+                            break
+                        case 5:
+                            println("Saindo do programa...")
+                            return
+                        default:
+                            println("Opção inválida.")
+                    }
+                } else {
+                    println("Digite um número entre 1 e 5.")
                 }
+            } else {
+                println("Nenhuma entrada detectada.")
+                break
             }
-
         }
-
     }
 
 
     void cadastrarCandidato() {
         println("Digite os dados do candidato:")
         println("Nome:")
-        String nome = sc.nextLine()
+        def nome = scanner.nextLine()
+        scanner.nextLine()
         println("Email:")
-        String email = sc.nextLine()
+        def email = scanner.nextLine()
+        scanner.nextLine()
         println("CPF:")
-        String cpfString = sc.nextLine()
-        cpfString = cpfString.replaceAll("\\.", "").replaceAll("-", "")
-        Long cpf = Long.parseLong(cpfString)
+        def cpf = scanner.nextLine().toLong()
+        scanner.nextLine()
         println("Idade:")
-        Integer idade = Integer.parseInt(sc.nextLine())
+        def idade = scanner.nextLine().toInteger()
+        scanner.nextLine()
         println("Estado:")
-        String estado = sc.nextLine()
+        def estado = scanner.next().trim()
+        scanner.nextLine()
         println("CEP:")
-        String cepString = sc.nextLine()
-        cepString = cepString.replaceAll("\\.", "").replaceAll("-", "")
-        Long cep = Long.parseLong(cepString)
+        def cep = scanner.nextLong()
+        scanner.nextLine()
         println("Descrição:")
-        String descricao = sc.nextLine()
+        def descricao = scanner.nextLine().trim()
+        scanner.nextLine()
         println("Senha:")
-        String senha = sc.nextLine()
+        def senha = scanner.nextLine()
+        scanner.nextLine()
 
         def tecnologias = []
         println("Tecnologias (separadas por vírgula):")
-        String[] tecInput = sc.nextLine().split(',')
+        def tecInput = scanner.nextLine().split(',')
         tecInput.each { tec ->
             def tecnologia = Tecnologias.valueOf(tec.trim())
             if (tecnologia != null) {
@@ -90,14 +101,14 @@ class Menu {
             }
         }
 
-        Candidato novoCandidato = new Candidato(nome: nome, email: email, cpf: cpf, idade: idade, estado: estado, cep: cep, descricao: descricao, senha: senha, tecnologias: tecnologias)
+        def novoCandidato = new Candidato(nome: nome, email: email, cpf: cpf, idade: idade, estado: estado, cep: cep, descricao: descricao, senha: senha, tecnologias: tecnologias)
         candidatoRegras.cadastrarCandidato(novoCandidato)
         println("Candidato cadastrado com sucesso!")
     }
 
     void listarCandidatos() {
         println("Listando candidatos:")
-        List<Candidato> candidatos = candidatoRegras.listarCandidatos()
+        def candidatos = candidatoRegras.listarCandidatos()
         candidatos.each {
             println(it)
         }
@@ -105,14 +116,12 @@ class Menu {
 
     void atualizarCandidato() {
         println("Digite o CPF do candidato que deseja atualizar:")
-        String cpfString = sc.nextLine()
-        cpfString = cpfString.replaceAll("\\.", "").replaceAll("-", "")
-        Long cpf = Long.parseLong(cpfString)
-        Candidato candidato = candidatoRegras.buscarCandidato(cpf)
+        def cpf = scanner.nextLine().toLong()
+        def candidato = candidatoRegras.buscarCandidato(cpf)
         if (candidato != null) {
             println("Digite os novos dados do candidato (deixe em branco para manter o mesmo):")
             println("Nome (atual: ${candidato.nome}):")
-            String nome = sc.nextLine()
+            def nome = scanner.nextLine().trim()
             if (!nome.isEmpty()) {
                 candidato.nome = nome
             }
@@ -125,9 +134,7 @@ class Menu {
 
     void excluirCandidato() {
         println("Digite o CPF do candidato que deseja excluir:")
-        String cpfString = sc.nextLine()
-        cpfString = cpfString.replaceAll("\\.", "").replaceAll("-", "")
-        Long cpf = Long.parseLong(cpfString)
+        def cpf = scanner.nextLine().toLong()
         if (candidatoRegras.excluirCandidato(cpf)) {
             println("Candidato excluído com sucesso!")
         } else {
