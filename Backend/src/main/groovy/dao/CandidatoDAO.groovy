@@ -18,9 +18,10 @@ class CandidatoDAO {
     """, [
                 candidato.nome, candidato.email, candidato.cpf, candidato.idade,
                 candidato.estado, candidato.cep, candidato.descricao,
-                candidato.senha, candidato.tecnologias
+                candidato.senha, candidato.tecnologias.join(',')
         ])
     }
+
     List<Candidato> all() {
         def candidatos = []
         sql.eachRow("SELECT * FROM candidato") { row ->
@@ -28,13 +29,13 @@ class CandidatoDAO {
                     idCandidato: row.idCandidato,
                     nome: row.nome,
                     email: row.email,
-                    cpf: row.cpf,
-                    idade: row.idade,
+                    cpf: formatCpf(row.cpf).toLong(),
+                    idade: row.idade as Integer,
                     estado: row.estado,
                     cep: row.cep,
                     descricao: row.descricao,
                     senha: row.senha,
-                    tecnologias: row.tecnologias.split(',').collect { Tecnologias.valueOf(it) }
+                    tecnologias: row.tecnologias ? row.tecnologias.split(',').collect { Tecnologias.valueOf(it) } : []
             )
         }
         return candidatos
@@ -43,16 +44,16 @@ class CandidatoDAO {
     void update(Candidato candidato) {
         sql.execute("""
             UPDATE candidato 
-            SET nome = ?, email = ?, idade = ?, estado = ?, cep = ?, descricao = ?, senha = ?, tecnologias = ? 
-            WHERE cpf = ?
+            SET nome = ?, email = ?, cpf = ?, idade = ?, estado = ?, cep = ?, descricao = ?, senha = ?, tecnologias = ? 
+            WHERE idCandidato = ?
         """, [
-                candidato.nome, candidato.email, candidato.idade, candidato.estado,
+                candidato.nome, candidato.email, candidato.cpf, candidato.idade, candidato.estado,
                 candidato.cep, candidato.descricao, candidato.senha,
-                candidato.tecnologias.join(','), candidato.cpf
+                candidato.tecnologias.join(','), candidato.idCandidato
         ])
     }
 
-    void delete(long cpf) {
-        sql.execute("DELETE FROM candidato WHERE cpf = ?", [cpf])
+    void delete(int id) {
+        sql.execute("DELETE FROM candidato WHERE idCandidato = ?", [id])
     }
 }

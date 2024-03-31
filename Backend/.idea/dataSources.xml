@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="linketinder_bd@localhost" uuid="7a7cf3cd-e7c9-4ce3-b6a3-efacb8c9b1b8">
-      <driver-ref>cockroach</driver-ref>
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/linketinder_bd</jdbc-url>

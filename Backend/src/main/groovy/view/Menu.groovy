@@ -1,11 +1,9 @@
-
 package view
 
 import model.Candidato
 import model.Tecnologias
 import regras.CandidatoRegras
 import dao.CandidatoDAO
-import java.util.Scanner
 
 class Menu {
 
@@ -29,81 +27,67 @@ class Menu {
     void executar() {
         exibirMenu()
         while (true) {
-            if (scanner.hasNextLine()) {
-                def opcao = scanner.nextLine()
-                if (opcao.isInteger()) {
-                    switch (opcao.toInteger()) {
-                        case 1:
-                            cadastrarCandidato()
-                            break
-                        case 2:
-                            listarCandidatos()
-                            break
-                        case 3:
-                            atualizarCandidato()
-                            break
-                        case 4:
-                            excluirCandidato()
-                            break
-                        case 5:
-                            println("Saindo do programa...")
-                            return
-                        default:
-                            println("Opção inválida.")
-                    }
-                } else {
-                    println("Digite um número entre 1 e 5.")
-                }
-            } else {
-                println("Nenhuma entrada detectada.")
-                break
+            def opcao = scanner.nextLine()
+
+            switch (opcao) {
+                case '1':
+                    cadastrarCandidato()
+                    break
+                case '2':
+                    listarCandidatos()
+                    break
+                case '3':
+                    atualizarCandidato()
+                    break
+                case '4':
+                    excluirCandidato()
+                    break
+                case '5':
+                    println("Saindo do programa...")
+                    return
+                default:
+                    println("Opção inválida.")
+
             }
         }
     }
-
 
     void cadastrarCandidato() {
         println("Digite os dados do candidato:")
         println("Nome:")
         def nome = scanner.nextLine()
-        scanner.nextLine()
         println("Email:")
         def email = scanner.nextLine()
-        scanner.nextLine()
         println("CPF:")
-        def cpf = scanner.nextLine().toLong()
+        def cpf = scanner.nextLong()
         scanner.nextLine()
         println("Idade:")
-        def idade = scanner.nextLine().toInteger()
+        def idade = scanner.nextInt()
         scanner.nextLine()
         println("Estado:")
-        def estado = scanner.next().trim()
-        scanner.nextLine()
+        def estado = scanner.nextLine()
         println("CEP:")
         def cep = scanner.nextLong()
         scanner.nextLine()
         println("Descrição:")
-        def descricao = scanner.nextLine().trim()
-        scanner.nextLine()
+        def descricao = scanner.nextLine()
         println("Senha:")
         def senha = scanner.nextLine()
-        scanner.nextLine()
 
-        def tecnologias = []
         println("Tecnologias (separadas por vírgula):")
-        def tecInput = scanner.nextLine().split(',')
-        tecInput.each { tec ->
-            def tecnologia = Tecnologias.valueOf(tec.trim())
-            if (tecnologia != null) {
-                tecnologias << tecnologia
-            } else {
-                println("Tecnologia inválida: $tec")
-            }
-        }
+        def tecInput = scanner.nextLine()
+        def tecnologias = new Tecnologias(tecInput)
 
-        def novoCandidato = new Candidato(nome: nome, email: email, cpf: cpf, idade: idade, estado: estado, cep: cep, descricao: descricao, senha: senha, tecnologias: tecnologias)
-        candidatoRegras.cadastrarCandidato(novoCandidato)
-        println("Candidato cadastrado com sucesso!")
+        def novoCandidato = new Candidato(nome: nome, email: email, cpf: cpf, idade: idade, estado: estado, cep: cep, descricao: descricao, senha: senha, tecnologias: tecnologias.nomes)
+
+        try {
+            candidatoRegras.cadastrarCandidato(novoCandidato)
+            println("Candidato cadastrado com sucesso!")
+        } catch (IllegalArgumentException e) {
+            println("Erro ao cadastrar o candidato: ${e.message}")
+        } finally {
+            retornarAoMenu()
+        }
     }
 
     void listarCandidatos() {
@@ -112,12 +96,13 @@ class Menu {
         candidatos.each {
             println(it)
         }
+        retornarAoMenu()
     }
 
     void atualizarCandidato() {
-        println("Digite o CPF do candidato que deseja atualizar:")
-        def cpf = scanner.nextLine().toLong()
-        def candidato = candidatoRegras.buscarCandidato(cpf)
+        println("Digite o ID do candidato que deseja atualizar:")
+        def id = scanner.nextLine().toLong()
+        def candidato = candidatoRegras.buscarCandidato(id)
         if (candidato != null) {
             println("Digite os novos dados do candidato (deixe em branco para manter o mesmo):")
             println("Nome (atual: ${candidato.nome}):")
@@ -130,15 +115,23 @@ class Menu {
         } else {
             println("Candidato não encontrado.")
         }
+        retornarAoMenu()
     }
 
     void excluirCandidato() {
-        println("Digite o CPF do candidato que deseja excluir:")
-        def cpf = scanner.nextLine().toLong()
-        if (candidatoRegras.excluirCandidato(cpf)) {
+        println("Digite o ID do candidato que deseja excluir:")
+        def id = scanner.nextLine().toLong()
+        if (candidatoRegras.excluirCandidato(id)) {
             println("Candidato excluído com sucesso!")
         } else {
             println("Candidato não encontrado.")
         }
+        retornarAoMenu()
+    }
+
+    void retornarAoMenu() {
+        println("Pressione Enter para retornar ao menu principal.")
+        scanner.nextLine()
+        exibirMenu()
     }
 }

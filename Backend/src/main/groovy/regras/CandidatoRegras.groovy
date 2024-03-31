@@ -12,7 +12,7 @@ class CandidatoRegras {
 
     void cadastrarCandidato(Candidato candidato) {
         try {
-            if (candidato.nome && candidato.email && candidato.cpf && candidato.idade && candidato.estado && candidato.cep && candidato.descricao && candidato.senha && candidato.tecnologias) {
+            if (validarDados(candidato)) {
                 candidatoDAO.insert(candidato)
             } else {
                 throw new IllegalArgumentException("Dados incompletos para cadastrar o candidato.")
@@ -20,6 +20,10 @@ class CandidatoRegras {
         } catch (Exception e) {
             println("Erro ao cadastrar o candidato: ${e.message}")
         }
+    }
+
+    private boolean validarDados(Candidato candidato) {
+        return candidato.nome && candidato.email && candidato.cpf && candidato.idade && candidato.estado && candidato.cep && candidato.descricao && candidato.senha && candidato.tecnologias
     }
 
     List<Candidato> listarCandidatos() {
@@ -39,9 +43,9 @@ class CandidatoRegras {
         }
     }
 
-    boolean excluirCandidato(Long cpf) {
+    boolean excluirCandidato(Long id) {
         try {
-            candidatoDAO.delete(cpf)
+            candidatoDAO.delete(id)
             return true
         } catch (Exception e) {
             println("Erro ao excluir o candidato: ${e.message}")
@@ -49,9 +53,9 @@ class CandidatoRegras {
         }
     }
 
-    Candidato buscarCandidato(Long cpf) {
+    Candidato buscarCandidato(Long id) {
         try {
-            return candidatoDAO.selectByCPF(cpf)
+            return candidatoDAO.selectById(id)
         } catch (Exception e) {
             println("Erro ao buscar o candidato: ${e.message}")
             return null
